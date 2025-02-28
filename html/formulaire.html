@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr"> <!-- 📌 Langue définie en français -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de contact</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- 📌 Lien vers une feuille de style CSS -->
+</head>
+<body>
+    <h1>Formulaire de contact</h1> <!-- 📌 Titre principal de la page -->
+
+    <!-- 📌 Début du formulaire -->
+    <form id="formulaire"> <!-- ⚠️ L’ID "formulaire" est essentiel pour la classe Formulaire.js -->
+        <fieldset id="infos"> <!-- 📌 Groupe de champs pour les infos personnelles -->
+            <legend><h2>Informations</h2></legend> <!-- 📌 Titre de la section -->
+
+            <div id="div_nm"> <!-- 📌 Chaque champ est placé dans un <div> -->
+                <label for="name">Nom :</label>
+                <input type="text" name="nom" id="name" placeholder="Parker" required>
+                <!-- 📌 La classe Formulaire peut masquer ou afficher ce champ avec maskChamp() et showChamp() -->
+            </div>
+
+            <div id="div_fnm">
+                <label for="firstname">Prénom :</label>
+                <input type="text" name="prenom" id="firstname" placeholder="Peter" required>
+                <!-- 📌 Pareil, peut être masqué/affiché dynamiquement -->
+            </div>
+
+            <div id="choiceStatut">
+                <label for="statut">Statut :</label>
+                <div>
+                    <input type="radio" name="statut" id="particulier" required checked>
+                    <label for="particulier">Particulier</label>
+                </div>
+                <div>
+                    <input type="radio" name="statut" id="professionnel" required>
+                    <label for="professionnel">Professionnel</label>
+                </div>
+                <!-- 📌 La classe Formulaire utilise isSelected() pour savoir quel bouton est coché -->
+            </div>
+
+        </fieldset>
+
+        <fieldset id="message"> <!-- 📌 Groupe de champs pour le message -->
+            <legend><h2>Message</h2></legend>
+
+            <div>
+                <label for="objet">Objet :</label>
+                <select type="text" name="objet" id="objet" required>
+                    <option value="demande_de_contact">Demande de contact</option>
+                    <option value="offre_d'emploi" selected>Offre d'emploi</option>
+                    <option value="envoi_d'une_brochure_tarifiaire">Envoi d'une brochure tarifaire</option>
+                </select>
+                <!-- 📌 On pourrait utiliser getAnswers() pour récupérer la valeur sélectionnée -->
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="email@mail.com" required>
+                <!-- 📌 Les données de cet input seront aussi récupérées avec getAnswers() -->
+            </div>
+
+            <textarea name="message" id="messageArea" cols="30" rows="10" placeholder="Message..." required></textarea>
+            <!-- 📌 Cette zone de texte sera récupérée dans le tableau answers de Formulaire.js -->
+
+            <button type="submit">Envoyer</button>
+            <!-- 📌 Lors du clic, les données du formulaire peuvent être affichées avec affAnswers() -->
+        </fieldset>
+    </form>
+    
+    <!-- 📌 Lien vers le fichier JavaScript qui va gérer les événements -->
+    <script src="../script/evenements.js" type="module"></script>
+</body>
+</html>
